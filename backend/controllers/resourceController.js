@@ -2,11 +2,15 @@ import { where } from "sequelize";
 import profileModel from "../models/profile.js";
 import resourceModel from "../models/resource.js";
 
+
 /** Show all the approve resources
  * 
  * @param {*} req
  * @param {*} res
  */
+
+// Show all resources
+
 export const getAllResources = async (req, res) => {
     try {
         const resources = await resourceModel.findAll({ where: { approve: true } });

@@ -6,6 +6,10 @@ import subjectRoutes from "./routes/subject.routes.js";
 import resourceRoutes from "./routes/resource.routes.js";
 import fileUpload from "express-fileupload";
 
+/**
+ * Database connection validation 
+ */
+
 const app = express();
 
 app.use(express.json());
