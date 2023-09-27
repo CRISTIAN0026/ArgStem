@@ -1,10 +1,10 @@
 import profileModel from "../models/profile.js";
 import hashPassword from "../helpers/hashPassword.js";
 import bcrypt from 'bcrypt';
-import generarId from "../helpers/generarId.js";
+import generarToken from "../helpers/generarToken.js";
 
 /** Show all the profiles, for admin only
- * 
+ *
  * @param {*} req
  * @param {*} res
  */
@@ -40,7 +40,7 @@ export const getProfile = async (req, res) => {
 export const createProfile = async (req, res) => {
     try {
         req.body.password = await hashPassword(req.body.password);
-        req.body.token = await generarId();
+        req.body.token = await generarToken();
         await profileModel.create(req.body);
         res.json({ msg: 'Profile created succesfully' });
     } catch (error) {

@@ -4,11 +4,13 @@ import db from "./database/db.js";
 import profileRoutes from "./routes/profile.routes.js";
 import subjectRoutes from "./routes/subject.routes.js";
 import resourceRoutes from "./routes/resource.routes.js";
+import fileUpload from "express-fileupload";
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
+app.use(fileUpload());
 
 app.use('/api/profiles', profileRoutes);
 app.use('/api/subjects', subjectRoutes);
