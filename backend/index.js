@@ -5,6 +5,10 @@ import profileRoutes from "./routes/profile.routes.js";
 import subjectRoutes from "./routes/subject.routes.js";
 import resourceRoutes from "./routes/resource.routes.js";
 
+/**
+ * Database connection validation 
+ */
+
 const app = express();
 
 app.use(express.json());

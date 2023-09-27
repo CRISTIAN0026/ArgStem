@@ -1,6 +1,11 @@
 import subjectModel from "../models/subject.js";
 
-// Show all subjects
+
+/**
+ *Show all subjects 
+ * @param {*} req 
+ * @param {*} res 
+ */
 export const getAllSubjects = async (req, res) => {
     try {
         const subjects = subjectModel.findAll();
@@ -10,6 +15,11 @@ export const getAllSubjects = async (req, res) => {
     }
 };
 
+/**
+ * filter by individual subjects
+ * @param {*} req 
+ * @param {*} res 
+ */
 export const getSubject = async (req, res) => {
     const { id } = req.params;
     try {
@@ -20,17 +30,27 @@ export const getSubject = async (req, res) => {
     }
 };
 
-// Create subject
+/**
+ * Create a subject 
+ * @param {*} req 
+ * @param {*} res 
+ */
+
 export const createSubject = async (req, res) => {
     try {
         await subjectModel.create(req.body);
-        res.json({ msg: 'subject created succesfully' });
+        res.json({ msg: 'Tema creado exitosamente' });
     } catch (error) {
         res.status(400).json({ msg: error.message });
     }
 };
 
-// Update subject
+/**
+ * update a subject
+ * @param {*} req 
+ * @param {*} res 
+ */
+
 export const updateSubject = async (req, res) => {
     const { id } = req.params;
     const subjectExist = await subjectModel.findOne({ where: { id } });
@@ -39,14 +59,19 @@ export const updateSubject = async (req, res) => {
             res.status(404).json({ msg: 'tema no encontrado' });
         } else {
             await subjectModel.update(req.body, { where: { id } });
-            res.json({ msg: 'subject updated succesfully' });
+            res.json({ msg: 'Tema actualizado Exitosamente' });
         }
     } catch (error) {
         res.status(400).json({ msg: error.message });
     }
 };
 
-// Delete subject
+/**
+ * Delete a subject
+ * @param {*} req 
+ * @param {*} res 
+ */
+
 export const deleteSubject = async (req, res) => {
     const { id } = req.params;
     const subjectExist = await subjectModel.findOne({ where: { id } });

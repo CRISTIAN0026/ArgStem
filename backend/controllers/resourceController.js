@@ -2,6 +2,7 @@ import profileModel from "../models/profile.js";
 import resourceModel from "../models/resource.js";
 
 // Show all resources
+
 export const getAllResources = async (req, res) => {
     try {
         const resources = await resourceModel.findAll();

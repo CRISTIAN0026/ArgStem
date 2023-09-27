@@ -2,6 +2,7 @@ import { getAllSubjects, getSubject,createSubject, updateSubject, deleteSubject 
 import express from "express";
 import checkAuth from "../middleware/checkAuth.js";
 
+
 const router = express.Router();
 
 router.route('/')
