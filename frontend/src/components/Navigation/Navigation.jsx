@@ -8,9 +8,9 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import "./Navigation.css"
 
 const user = {
-    session: true,
+    session: false,
     password: "<PASSWORD>",
-    type:"user"
+    type:"invite"
 }
 
 
@@ -61,7 +61,7 @@ export default function Navigation(){
       </FormControl>
     </Box>}
     
-{ !user.session && user.type === "" && <Grid item style={{
+{ !user.session && user.type === "invite" && <Grid item style={{
     display:"flex",
             justifyContent: "flex-end",
             minWidth:"300px",

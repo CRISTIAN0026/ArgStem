@@ -5,9 +5,9 @@ import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 
 const user = {
-    session: true,
+    session: false,
     password: "<PASSWORD>",
-    type:"user"
+    type:"invite",
 }
 
 export default function Home(){
@@ -95,7 +95,7 @@ export default function Home(){
             
         <Typography style={{padding:"5px"}}>youtube.com</Typography>
         <Typography style={{padding:"5px"}}>Como mejorar la concentracion y estudies mas</Typography>
-        <Link style={{fontSize:"12px"}}>https://www.youtube.com/watch?v=PldYiX6hOL0&pp=ygUXY29tbyBtZWpvcmFyIGxhIG1lbW9yaWE%3D</Link>
+        <Link target="_blank" href="https://www.youtube.com/watch?v=PldYiX6hOL0&pp=ygUXY29tbyBtZWpvcmFyIGxhIG1lbW9yaWE%3D" style={{fontSize:"12px"}}>https://www.youtube.com/watch?v=PldYiX6hOL0&pp=ygUXY29tbyBtZWpvcmFyIGxhIG1lbW9yaWE%3D</Link>
             </Card>
         </Box>}
         </Box>
