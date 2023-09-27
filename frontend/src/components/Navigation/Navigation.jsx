@@ -36,9 +36,10 @@ export default function Navigation(){
           label="Selecione tema a buscar"
         style={{background:"#FFFFFF", minHeight:10, borderRadius:10}}
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          <MenuItem value={10}>Matemáticas</MenuItem>
+          <MenuItem value={20}>Ciencia</MenuItem>
+          <MenuItem value={30}>Ingeniería</MenuItem>
+          <MenuItem value={30}>Tecnología</MenuItem>
         </Select>
       </FormControl>
     </Box>}
