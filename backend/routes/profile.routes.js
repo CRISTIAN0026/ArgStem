@@ -1,14 +1,19 @@
-import { getAllProfiles, createProfile, updateProfile, deleteProfile } from "../controllers/profileController.js";
 import express from "express";
+import { getAllProfiles, getProfile,createProfile, updateProfile, deleteProfile, login, updateActive } from "../controllers/profileController.js";
+import checkAuth from "../middleware/checkAuth.js";
 
 const router = express.Router();
 
 router.route('/')
-    .get( getAllProfiles)
+    .get(checkAuth, getAllProfiles)
     .post(createProfile);
 
-router.route('/:id')
-    .put(updateProfile)
-    .delete(deleteProfile);
+router.route('/:token/:id')
+    .get(checkAuth, getProfile)
+    .put(checkAuth, updateProfile)
+    .delete(checkAuth, deleteProfile);
 
+router.put('/active/:id', checkAuth, updateActive)
+
+router.post('/login', login);
 export default router;

@@ -9,6 +9,7 @@ const profileModel = db.define('profiles', {
     email: DataTypes.STRING,
     phone: DataTypes.STRING,
     password: DataTypes.STRING,
+    token: DataTypes.STRING,
     idRols: DataTypes.INTEGER,
     active: { type: DataTypes.BOOLEAN, defaultValue: true },
 });
