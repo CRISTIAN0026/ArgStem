@@ -6,8 +6,8 @@ const resourceModel = db.define('resources', {
     description: DataTypes.STRING,
     resource: DataTypes.STRING,
     idSubjects: DataTypes.INTEGER,
-    IdProfiles: DataTypes.INTEGER,
-    approve: {type: DataTypes.BOOLEAN, defaultValue: false}
+    approve: { type: DataTypes.BOOLEAN, defaultValue: false },
+    idProfile: DataTypes.INTEGER,
 });
 
 export default resourceModel;

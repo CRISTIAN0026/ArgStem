@@ -1,3 +1,4 @@
+import profileModel from "../models/profile.js";
 import resourceModel from "../models/resource.js";
 
 // Show all resources
@@ -21,11 +22,23 @@ export const getResource = async (req, res) => {
     }
 };
 
+export const getAllMyResource = async (req, res) => {
+    const { id } = await profileModel.findOne({ where: { token: req.params.token } });
+    const myResources = await resourceModel.findOne({ where: { idProfiles: id } });
+    try {
+        res.json(myResources);
+    } catch (error) {
+        res.status(400).json({ msg: error.message })
+    }
+};
+
 // Create resource
 export const createResource = async (req, res) => {
+    const profile = await profileModel.findOne({ where: { token: req.params.token } });
+    req.body.idProfile = profile.id;
     try {
         await resourceModel.create(req.body);
-        res.json({ msg: 'resource upload succesfully' })
+        res.json({ msg: 'resource upload succesfully!' })
     } catch (error) {
         res.status(400).json({ msg: error.message });
     }

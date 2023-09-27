@@ -4,16 +4,16 @@ import checkAuth from "../middleware/checkAuth.js";
 
 const router = express.Router();
 
-router.route('/')
-    .get(checkAuth, getAllProfiles)
-    .post(createProfile);
+router.get('/:token',checkAuth, getAllProfiles);
+
+router.post(createProfile);
 
 router.route('/:token/:id')
     .get(checkAuth, getProfile)
     .put(checkAuth, updateProfile)
     .delete(checkAuth, deleteProfile);
 
-router.put('/active/:id', checkAuth, updateActive)
+router.put('/active/:token/:id', checkAuth, updateActive);
 
 router.post('/login', login);
 export default router;

@@ -3,7 +3,11 @@ import hashPassword from "../helpers/hashPassword.js";
 import bcrypt from 'bcrypt';
 import generarId from "../helpers/generarId.js";
 
-// Show all profiles
+/** Show all the profiles, for admin only
+ * 
+ * @param {*} req
+ * @param {*} res
+ */
 export const getAllProfiles = async (req, res) => {
     try {
         const profiles = await profileModel.findAll();
@@ -13,6 +17,11 @@ export const getAllProfiles = async (req, res) => {
     }
 };
 
+/** Get the profile by id, to update or delete
+ * 
+ * @param {*} req
+ * @param {*} res
+ */
 export const getProfile = async (req, res) => {
     const { id } = req.params;
     try {
@@ -23,7 +32,11 @@ export const getProfile = async (req, res) => {
     }
 };
 
-// Create new profile, to log in
+/** Create profile
+ * 
+ * @param {*} req
+ * @param {*} res
+ */
 export const createProfile = async (req, res) => {
     try {
         req.body.password = await hashPassword(req.body.password);
@@ -35,7 +48,12 @@ export const createProfile = async (req, res) => {
     }
 };
 
-// Update profile
+/** Update profile
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ * @returns 
+ */
 export const updateProfile = async (req, res) => {
     const { id } = req.params;
     const { password } = req.body;
@@ -55,7 +73,14 @@ export const updateProfile = async (req, res) => {
     }
 };
 
-// Delete profile
+
+/** Delete a profile from database
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ * @returns 
+ */
+
 export const deleteProfile = async (req, res) => {
     const { id } = req.params;
     const profileExist = await profileModel.findOne({ where: { id } })
@@ -71,6 +96,12 @@ export const deleteProfile = async (req, res) => {
     }
 };
 
+/** login system
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ * @returns 
+ */
 export const login = async (req, res) => {
     const { email, password } = req.body;
 
@@ -91,6 +122,13 @@ export const login = async (req, res) => {
 
     res.status(200).json({ message: 'Inicio de sesión exitoso' });
 }
+
+/** Update the active state from the user
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ * @returns 
+ */
 
 export const updateActive = async (req, res) => {
     const { id } = req.params;
