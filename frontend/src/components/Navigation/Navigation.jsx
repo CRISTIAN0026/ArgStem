@@ -7,6 +7,8 @@ import Select from '@mui/material/Select';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import "./Navigation.css"
 
+
+
 const user = {
     session: false,
     password: "<PASSWORD>",
@@ -19,10 +21,12 @@ export default function Navigation(){
         <Grid container 
         className="content"
         >
-            <Box sx={{padding:"10px 15px 0px 10px"}}>
+            <Link href="/">
+            <Box  sx={{padding:"10px 15px 0px 10px"}}>
                 <img style={{marginLeft:"20px", width:60, height:60}}   src="https://i.ibb.co/TTThFw2/Logo.png" alt="Not found" />
                 <Typography style={{color:"#FFFFFF", fontFamily:"Roboto", fontSize:"20px"}}>ARG STEM</Typography>
             </Box>
+            </Link>
             { user.session && user.type === "user" && <Box sx={{ display:"flex", minWidth:300,  justifyContent:"flex-end", padding:"25px"}} >
       <FormControl style={{minWidth:250, minHeight:5}} >
         <InputLabel id="demo-simple-select-label" style={{fontFamily:"Roboto"}}>Selecione tema a buscar</InputLabel>
@@ -66,10 +70,10 @@ export default function Navigation(){
             justifyContent: "flex-end",
             minWidth:"300px",
         }}>
-            <Link style={{color: "#FFFFFF",textAlign:"center", padding:"40px", fontFamily:"Roboto", textTransform:"none" }} >
-            <span onClick={() => { console.log("Iniciar Sesión") }} style={{ color: "#FFFFFF", cursor: "pointer" }}>Iniciar Sesión</span></Link>
-            <Link style={{color: "#FFFFFF",textAlign:"center", padding:"40px", fontFamily:"Roboto", cursor:"pointer" }}>
-            <span onClick={() => { console.log("Registrarse") }} style={{ color: "#FFFFFF", cursor: "pointer" }}>Registrarse</span></Link>
+            <Link href="/login"  style={{color: "#FFFFFF",textAlign:"center", padding:"40px", fontFamily:"Roboto", textTransform:"none" }} >
+            <span style={{ color: "#FFFFFF", cursor: "pointer" }}>Iniciar Sesión</span></Link>
+            <Link href="/register" style={{color: "#FFFFFF",textAlign:"center", padding:"40px", fontFamily:"Roboto", cursor:"pointer" }}>
+            <span style={{ color: "#FFFFFF", cursor: "pointer" }}>Registrarse</span></Link>
             </Grid>}
             {
                 user.session && user.type === "admin" &&
