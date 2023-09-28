@@ -108,19 +108,19 @@ export const login = async (req, res) => {
     const user = await profileModel.findOne({ where: { email } });
 
     if (!user) {
-        return res.status(404).json({ message: 'Usuario no encontrado' });
+        return res.status(404).json({ msg: 'Usuario no encontrado' });
     };
 
     const passwordSuccess = await bcrypt.compare(password, user.password);
-    if (!password) {
-        return res.status(401).json({ message: 'Contraseña incorrecta' });
+    if (!passwordSuccess) {
+        return res.status(404).json({ msg: 'Contraseña incorrecta' });
     };
 
     if (!user.active) {
-        return res.status(401).json({ message: 'Usuario bloqueado en la plataforma, contactese con el administrador para mas informacion' });
+        return res.status(404).json({ msg: 'Usuario bloqueado en la plataforma, contactese con el administrador para mas informacion' });
     }
 
-    res.status(200).json({ message: 'Inicio de sesión exitoso' });
+    res.json({msg: user.token});
 }
 
 /** Update the active state from the user

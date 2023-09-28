@@ -11,9 +11,9 @@ import "./Navigation.css"
 
 
 const user = {
-    session: true,
+    session: false,
     password: "<PASSWORD>",
-    type:"user"
+    type:"invite"
 }
 
 

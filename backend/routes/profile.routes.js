@@ -8,6 +8,8 @@ router.get('/:token',checkAuth, getAllProfiles);
 
 router.post('/', createProfile);
 
+router.post('/login', login);
+
 router.route('/:token/:id')
     .get(checkAuth, getProfile)
     .put(checkAuth, updateProfile)
@@ -15,5 +17,4 @@ router.route('/:token/:id')
 
 router.put('/active/:token/:id', checkAuth, updateActive);
 
-router.post('/login', login);
 export default router;
