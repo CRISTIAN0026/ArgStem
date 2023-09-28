@@ -13,8 +13,23 @@ import fileUpload from "express-fileupload";
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
 app.use(fileUpload());
+
+const whitelist = ['http://localhost:3000'];
+
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (whitelist.includes(origin)) {
+            // Puede consultar la api
+            callback(null, true);
+        } else {
+            // NO esta permitido el request
+            callback(new Error("Error de cors"));
+        }
+    }
+}
+app.use(cors(corsOptions));
 
 app.use('/api/profiles', profileRoutes);
 app.use('/api/subjects', subjectRoutes);

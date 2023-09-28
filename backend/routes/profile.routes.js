@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('/:token',checkAuth, getAllProfiles);
 
-router.post(createProfile);
+router.post('/', createProfile);
 
 router.route('/:token/:id')
     .get(checkAuth, getProfile)
