@@ -25,8 +25,19 @@ export default function Login() {
       return;
     }
 
-    const { data } = await axios.post('http://localhost:4000/api/profiles', { name, lastName, dni, email, password, phone, idRols });
-    alert(data.msg);
+    try {
+      const { data } = await axios.post('http://localhost:4000/api/profiles', { name, lastName, dni, email, password, phone, idRols });
+      alert(data.msg);
+      setName('');
+      setLastName('');
+      setDni('');
+      setEmail('');
+      setPhone('');
+      setPassword('');
+      setConfirmPassword('');
+    } catch (error) {
+      alert(error.response.data.msg);
+    }
   }
   return (
     <Grid style={{ background: "#1D73C3", display: "flex", justifyContent: "flex-end" }}>

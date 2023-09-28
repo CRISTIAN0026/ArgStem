@@ -16,7 +16,7 @@ app.use(express.json());
 // app.use(cors());
 app.use(fileUpload());
 
-const whitelist = ['http://localhost:3000'];
+const whitelist = ['http://localhost:3000', ''];
 
 const corsOptions = {
     origin: function (origin, callback) {
