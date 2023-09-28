@@ -56,6 +56,7 @@ export default function Home(){
           alt="Not found"
           height="140"
           title="Image Title"
+          // https://www.youtube.com/watch?v=s5ABwHaN7as&pp=ygUhYW5hbGlzaXMgeSBkZXNhcnJvbGxvIGRlIHNvZnR3YXJl
           image="https://i.ibb.co/6Z9K5dJ/Logo-color-removebg-preview.png"
           style={{ borderRadius: '50%', maxHeight:60, maxWidth:60, margin: '10px 0px 0px 0px'}}
         />
@@ -85,11 +86,11 @@ export default function Home(){
             </Card>
         </Box>}
         {user.type === "user" && user.session  &&<Box style={{border:"1px solid black",minWidth:344,minHeight:239, maxHeight:239, marginTop:50, marginRight:30, borderRadius:10, padding:"10px 10px 10px 10px",overflowY: "auto"}}>
-        <Card style={{marginTop:"20px", justifyContent:"space-around", border:"1px solid black", minHeight:104, borderRadius:10}}>
+        <Card style={{marginTop:"20px", justifyContent:"space-around", border:"1px solid black", minHeight:104, borderRadius:10, maxWidth:380}}>
            
         <Typography style={{padding:"5px"}}>youtube.com</Typography>
-        <Typography style={{padding:"5px"}}>Como mejorar la concentracion y estudies mas</Typography>
-        <Link style={{fontSize:"12px"}}>https://www.youtube.com/watch?v=PldYiX6hOL0&pp=ygUXY29tbyBtZWpvcmFyIGxhIG1lbW9yaWE%3D</Link>
+        <Typography style={{padding:"5px"}}>Analisis y desarrollo de software</Typography>
+        <Link target="_blank" href="https://www.youtube.com/watch?v=s5ABwHaN7as&pp=ygUhYW5hbGlzaXMgeSBkZXNhcnJvbGxvIGRlIHNvZnR3YXJl" style={{fontSize:"12px"}}>https://www.youtube.com/watch?v=s5ABwHaN7as&pp=ygUhYW5hbGlzaXMgeSBkZXNhcnJvbGxvIGRlIHNvZnR3YXJl</Link>
             </Card>
             <Card style={{marginTop:"20px", justifyContent:"space-around", border:"1px solid black", minHeight:104, borderRadius:10}}>
             
