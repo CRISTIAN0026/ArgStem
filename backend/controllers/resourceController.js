@@ -8,12 +8,19 @@ import resourceModel from "../models/resource.js";
  * @param {*} req
  * @param {*} res
  */
-
-// Show all resources
-
-export const getAllResources = async (req, res) => {
+export const getAllResourcesApprove = async (req, res) => {
     try {
         const resources = await resourceModel.findAll({ where: { approve: true } });
+        res.json(resources);
+    } catch (error) {
+        res.status(400).json({ msg: error.message });
+    }
+};
+
+// 
+export const getAllResources = async (req, res) => {
+    try {
+        const resources = await resourceModel.findAll();
         res.json(resources);
     } catch (error) {
         res.status(400).json({ msg: error.message });

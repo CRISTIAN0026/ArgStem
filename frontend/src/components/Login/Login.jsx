@@ -3,7 +3,6 @@ import { Grid, Box, TextField, Typography, Button, Link } from "@mui/material";
 import CardMedia from '@mui/material/CardMedia';
 import axios from "axios";
 import Swal from "sweetalert2";
-import { Navigate } from "react-router-dom";
 
 export default function Login() {
 
@@ -12,6 +11,18 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!email.includes('@') || !email.includes('.com')) {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Digita una direccion de correo electronico valido',
+        showConfirmButton: false,
+        timer: 1300,
+        width: '25rem',
+        height: '25rem',
+      });
+      return;
+    }
 
     try {
       const { data } = await axios.post('http://localhost:4000/api/profiles/login', { email, password });
@@ -21,7 +32,7 @@ export default function Login() {
     } catch (error) {
       Swal.fire({
         position: 'top-end',
-        icon: 'info',
+        icon: 'error',
         title: error.response.data.msg,
         showConfirmButton: false,
         timer: 1300,

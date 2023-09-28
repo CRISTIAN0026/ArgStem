@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Grid, Box, TextField, Typography, Button, Link } from "@mui/material";
 import CardMedia from '@mui/material/CardMedia';
 import axios from 'axios';
+import Swal from "sweetalert2";
 
 export default function Login() {
   const [name, setName] = useState('');
@@ -16,18 +17,58 @@ export default function Login() {
     e.preventDefault();
 
     if ([name, lastName, dni, email, password, confirmPassword].includes('')) {
-      alert('Todos los campos son requeridos');
+      Swal.fire({
+        position: 'top-end',
+        icon: 'info',
+        title: 'Todos los campos son requeridos',
+        showConfirmButton: false,
+        timer: 1300,
+        width: '25rem',
+        height: '25rem',
+      });
       return;
     }
 
     if (password !== confirmPassword) {
-      alert('Las contraseñas no coinciden');
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Las contraseñas no coinciden',
+        showConfirmButton: false,
+        timer: 1300,
+        width: '25rem',
+        height: '25rem',
+      });
+      return;
+    };
+
+    if (!email.includes('@') || !email.includes('.com')) {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Digita una direccion de correo electronico valido',
+        showConfirmButton: false,
+        timer: 1300,
+        width: '25rem',
+        height: '25rem',
+      });
       return;
     }
 
     try {
       const { data } = await axios.post('http://localhost:4000/api/profiles', { name, lastName, dni, email, password, phone, idRols });
-      alert(data.msg);
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: data.msg,
+        showConfirmButton: false,
+        timer: 1500,
+        width: '25rem',
+        height: '25rem',
+      });
+      setTimeout(() => {
+        window.location.href = `http://localhost:3000/login`;
+      }, 1800);
       setName('');
       setLastName('');
       setDni('');
@@ -87,7 +128,7 @@ export default function Login() {
         position: "relative",
         flexDirection: "column"
       }}>
-        <Typography style={{ color: "#EFCB69", fontSize: "64px", padding: "0px 0px 0px 150px" }}>REGISTRARSE</Typography>
+        <Typography style={{ color: "#1D73C3", fontSize: "64px", padding: "0px 0px 0px 150px" }}>REGISTRARSE</Typography>
         <form
           onSubmit={handleSubmit}
         >
@@ -117,11 +158,11 @@ export default function Login() {
               <Box style={{ display: "flex", justifyContent: "space-around" }}>
                 <Box style={{ display: "flex", flexDirection: "column" }}>
                   <Typography style={{ fontSize: "18px" }}>Telefono</Typography>
-                  <TextField id="outlined-basic" maxRow={5} label="Digite el numero de celular" value={phone} onChange={e => setPhone(e.target.value)} />
+                  <TextField id="outlined-basic" maxRow={5} type="number" label="Digite el numero de celular" value={phone} onChange={e => setPhone(e.target.value)} />
                 </Box>
                 <Box style={{ display: "flex", flexDirection: "column" }}>
                   <Typography style={{ fontSize: "18px" }}>Numero de documento</Typography>
-                  <TextField id="outlined-basic" maxRow={5} label="Digite el numero de documento" value={dni} onChange={e => setDni(e.target.value)} />
+                  <TextField id="outlined-basic" maxRow={5} type="number" label="Digite el numero de documento" value={dni} onChange={e => setDni(e.target.value)} />
                 </Box>
               </Box>
               <Box style={{ display: "flex", justifyContent: "space-around" }}>
