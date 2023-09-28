@@ -2,9 +2,55 @@ import React from "react";
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import { Box, Button, Typography } from "@mui/material";
+import Swal from 'sweetalert2';
 
+
+
+const user = {
+  session: false,
+  password: "<PASSWORD>",
+  type:"invite",
+}
 
 export default function CardResource({image,name,description}){
+
+
+function showPdfInSwal() {
+  const pdfUrl = 'http://www.colegioalteralteris.edu.co/documentos/varios/himnos/Himno_de_Colombia.pdf';
+
+  if(user.type === "user" || user.type === "invite"){
+  Swal.fire({
+    title: 'PDF Viewer',
+    html: `<iframe src="${pdfUrl}" width="100%" height="500"></iframe>`,
+    width: '80%',
+    height: '80%',
+    showCloseButton: true,
+  })
+}
+
+  if(user.type === "admin"){
+   Swal.fire({
+    title: 'PDF Viewer',
+    html: `<iframe src="${pdfUrl}" width="100%" height="500"></iframe>`,
+    width: '80%',
+    height: '80%',
+    showCloseButton: true,
+    showConfirmButton: true,
+    showDenyButton: true,
+    denyButtonText: 'Rechazar',
+    confirmButtonText: 'Aceptar',
+    confirmButtonColor:"#153794",
+    denyButtonColor:"#FF0000",
+  }).then((result) => {
+    if (result.isDenied) {
+      Swal.fire('Rechazado', '', 'success');
+    } else if (result.isConfirmed) {
+      Swal.fire('Aprobado', '', 'success');
+    }
+  })
+}
+}
+
     return(
         <Card style={{marginTop:"50px", 
         display:"flex", 
@@ -32,7 +78,7 @@ export default function CardResource({image,name,description}){
             Este es un recurso que te puede servir para el temea de programacion y mas
             </Typography>
             <Box style={{display:"flex", justifyContent:"center", padding:"10px"}}>
-            <Button style={{backgroundColor:"#71BFE4", color:"white",minWidth:107, minHeight:7, fontSize:12, textTransform:"none"}}>Ver Mas</Button>
+            <Button onClick={()=> showPdfInSwal()} style={{backgroundColor:"#71BFE4", color:"white",minWidth:107, minHeight:7, fontSize:12, textTransform:"none"}}>Ver Mas</Button>
             </Box>
         </Box>
       </Card>
