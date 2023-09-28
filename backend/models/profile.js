@@ -1,6 +1,10 @@
 import db from "../database/db.js";
 import { DataTypes } from 'sequelize';
 
+/**
+ * user profile model
+ */
+
 const profileModel = db.define('profiles', {
     name: DataTypes.STRING,
     lastName: DataTypes.STRING,
@@ -9,6 +13,7 @@ const profileModel = db.define('profiles', {
     email: DataTypes.STRING,
     phone: DataTypes.STRING,
     password: DataTypes.STRING,
+    token: DataTypes.STRING,
     idRols: DataTypes.INTEGER,
     active: { type: DataTypes.BOOLEAN, defaultValue: true },
 });
