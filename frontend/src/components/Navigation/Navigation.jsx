@@ -56,10 +56,10 @@ export default function Navigation(){
       </FormControl>
     </Box>}
             { user.session && user.type === "admin" &&<Box style={{display:"flex"}}>
-        <Button style={{color:"white", fontSize:18}}>Inicio</Button>
+        <Button href="/" style={{color:"white", fontSize:18}}>Inicio</Button>
         <Button style={{color:"white", fontSize:18}}>Solicitudes</Button>
-        <Button style={{color:"white", fontSize:18}}>Bublicar</Button>
-        <Button style={{color:"white", fontSize:18}}>Usuarios</Button>
+        <Button href="/upload" style={{color:"white", fontSize:18}}>Bublicar</Button>
+        <Button href="/users" style={{color:"white", fontSize:18}}>Usuarios</Button>
     </Box>}
             <Grid item style={{display:"flex", minHeight:"100px"}}>
             { !user.session && user.type === "invite" && <Box sx={{ display:"flex", minWidth:300,  justifyContent:"flex-end", padding:"25px 0px "}} >
@@ -88,15 +88,25 @@ export default function Navigation(){
             <Link href="/register" style={{color: "#FFFFFF",textAlign:"center", padding:"40px", fontFamily:"Roboto", cursor:"pointer" }}>
             <span style={{ color: "#FFFFFF", cursor: "pointer" }}>Registrarse</span></Link>
             </Grid>}
-            {
-                user.session && user.type === "admin" &&
+             {
+                user.type === "user" && user.session &&
                 <Box style={{ padding:"20px 30px 0px 10px" }}>
-                <AccountCircleOutlinedIcon style={{ fontSize: 48, color:"white", padding:"0px 10px 0px"}}/>
-                <Typography style={{color:"white", fontSize:18}}>Mi perfil</Typography>
+                  <Box>
+                <AccountCircleOutlinedIcon style={{ fontSize: 48, color:"white", padding:"0px 0px 0px 20px"}}/>
+                </Box>
+                <Button 
+                id="basic-button"
+                aria-controls={open ? 'basic-menu' : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? 'true' : undefined}
+                onClick={handleClick}
+                style={{color:"white"}}
+                >Mi perfil 
+                </Button>
                 </Box>
             }
-             {
-                user.session && user.type === "user" &&
+            {
+                user.type === "admin" && user.session &&
                 <Box style={{ padding:"20px 30px 0px 10px" }}>
                   <Box>
                 <AccountCircleOutlinedIcon style={{ fontSize: 48, color:"white", padding:"0px 0px 0px 20px"}}/>
@@ -123,7 +133,7 @@ export default function Navigation(){
       >
         <Box  style={{display:"flex", flexDirection:"column"}}>
         <Link style={{textTransform:"none", color:"black", fontWeight:700}} href="/profile">Perfil</Link>
-        <Link style={{textTransform:"none", color:"black", fontWeight:700}} href="/document">Mi documentos</Link>
+        {user.type === "user" &&<Link style={{textTransform:"none", color:"black", fontWeight:700}} href="/document">Mis documentos</Link>}
         <Link style={{textTransform:"none", color:"black", fontWeight:700}}>Cerrar sesion</Link>
         </Box>
       </Menu>
