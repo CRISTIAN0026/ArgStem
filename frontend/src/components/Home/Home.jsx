@@ -5,9 +5,9 @@ import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 
 const user = {
-    session: false,
+    session: true,
     password: "<PASSWORD>",
-    type:"invite",
+    type:"user",
 }
 
 export default function Home(){

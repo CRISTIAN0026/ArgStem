@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid, Link, Box, Typography, Button } from "@mui/material";
 import InputLabel from '@mui/material/InputLabel';
+import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
@@ -10,13 +11,24 @@ import "./Navigation.css"
 
 
 const user = {
-    session: false,
+    session: true,
     password: "<PASSWORD>",
-    type:"invite"
+    type:"user"
 }
 
 
 export default function Navigation(){
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+
     return(
         <Grid container 
         className="content"
@@ -86,10 +98,35 @@ export default function Navigation(){
              {
                 user.session && user.type === "user" &&
                 <Box style={{ padding:"20px 30px 0px 10px" }}>
-                <AccountCircleOutlinedIcon style={{ fontSize: 48, color:"white", padding:"0px 10px 0px"}}/>
-                <Typography style={{color:"white", fontSize:18}}>Mi perfil</Typography>
+                  <Box>
+                <AccountCircleOutlinedIcon style={{ fontSize: 48, color:"white", padding:"0px 0px 0px 20px"}}/>
+                </Box>
+                <Button 
+                id="basic-button"
+                aria-controls={open ? 'basic-menu' : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? 'true' : undefined}
+                onClick={handleClick}
+                style={{color:"white"}}
+                >Mi perfil 
+                </Button>
                 </Box>
             }
+            <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
+      >
+        <Box  style={{display:"flex", flexDirection:"column"}}>
+        <Link style={{textTransform:"none", color:"black", fontWeight:700}} href="/profile">Perfil</Link>
+        <Link style={{textTransform:"none", color:"black", fontWeight:700}} href="/document">Mi documentos</Link>
+        <Link style={{textTransform:"none", color:"black", fontWeight:700}}>Cerrar sesion</Link>
+        </Box>
+      </Menu>
             </Grid>
         </Grid>
     )

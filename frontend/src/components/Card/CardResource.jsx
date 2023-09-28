@@ -7,9 +7,9 @@ import Swal from 'sweetalert2';
 
 
 const user = {
-  session: false,
+  session: true,
   password: "<PASSWORD>",
-  type:"invite",
+  type:"user",
 }
 
 export default function CardResource({image,name,description}){

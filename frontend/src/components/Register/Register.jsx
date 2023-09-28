@@ -7,8 +7,6 @@ export default function Login(){
         <Grid style={{background:"#1D73C3", display:"flex", justifyContent:"flex-end"}}>
 
             <Box style={{
-                /* Ellipse 2 */
-
 position: "absolute",
 width: "425px",
 height: "425px",
@@ -44,7 +42,6 @@ borderRadius:"500px"
             </Box>
 
             <Grid style={{
-        // display:"flex", 
         maxWidth:651,
         minHeight:618, 
         minWidth:651,
@@ -52,7 +49,6 @@ borderRadius:"500px"
         borderRadius:30,
         background:"#FFFFFF", 
         position:"relative",
-        // justifyContent:"space-be", 
         flexDirection:"column"}}>
              <Typography style={{color:"#EFCB69", fontSize:"64px", padding:"0px 0px 0px 150px"}}>REGISTRARSE</Typography>
              <Box
@@ -102,7 +98,7 @@ borderRadius:"500px"
     
     <Button style={{background:"#153794", marginLeft:"250px", fontSize:20,  textTransform:"none", color:"white"}}>Ingresar</Button>
     <Box >
-    <Link href="/register" style={{marginLeft:"180px", color:"#9B9B9B", fontSize:"18px"}}>¿Ya tienes una cuenta? Inicia sesion!</Link>
+    <Link href="/login" style={{marginLeft:"180px", color:"#9B9B9B", fontSize:"18px"}}>¿Ya tienes una cuenta? Inicia sesion!</Link>
     </Box>
         </Grid>
         </Grid>
