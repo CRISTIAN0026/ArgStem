@@ -16,6 +16,7 @@ export default function Login() {
     try {
       const { data } = await axios.post('http://localhost:4000/api/profiles/login', { email, password });
       localStorage.setItem('token', data.msg);
+      localStorage.setItem('id', data.id);
       window.location.href = `http://localhost:3000`;
     } catch (error) {
       Swal.fire({

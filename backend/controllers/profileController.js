@@ -120,7 +120,10 @@ export const login = async (req, res) => {
         return res.status(404).json({ msg: 'Usuario bloqueado en la plataforma, contactese con el administrador para mas informacion' });
     }
 
-    res.json({msg: user.token});
+    res.json({
+        msg: user.token,
+        id: user.id
+    });
 }
 
 /** Update the active state from the user

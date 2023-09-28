@@ -5,13 +5,23 @@ import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import axios from "axios";
 
-const user = {
-  session: true,
-  password: "<PASSWORD>",
-  type: "user",
-}
-
 export default function Home() {
+
+  const token = localStorage.getItem('token');
+  const id = localStorage.getItem('id');
+
+  const getKeys = async () => {
+    try {
+      await axios.get(``)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const user = {
+    session: true,
+    type: "user",
+  }
 
   // const response = await fetch('https://rickandmortyapi.com/api/character/');
   // const data = await response.json();
@@ -52,16 +62,16 @@ export default function Home() {
         {user.type === "user" && user.session && <Box style={{ border: "1px solid black", display: "flex", flexDirection: "column", justifyContent: "space-between", minWidth: 344, minHeight: 238, maxHeight: 239, marginTop: 10, marginRight: 30, borderRadius: 10, padding: "10px 10px 10px 10px", overflowY: "auto" }}>
           <Card style={{ marginTop: "5px", display: "flex", justifyContent: "space-around", border: "1px solid black", minHeight: 71, borderRadius: 30 }}>
             <CardMedia
-          component="img"
-          alt="Not found"
-          height="140"
-          title="Image Title"
-          image="https://i.ibb.co/6Z9K5dJ/Logo-color-removebg-preview.png"
-          style={{ borderRadius: '50%', maxHeight:60, maxWidth:60, margin: '10px 0px 0px 0px'}}
-        />
-        <Typography style={{padding:"20px"}}>JavaScript</Typography>
-            </Card>
-            <Card style={{marginTop:"20px",display:"flex",justifyContent:"space-around", border:"1px solid black", minHeight:71, borderRadius:30}}>
+              component="img"
+              alt="Not found"
+              height="140"
+              title="Image Title"
+              image="https://i.ibb.co/6Z9K5dJ/Logo-color-removebg-preview.png"
+              style={{ borderRadius: '50%', maxHeight: 60, maxWidth: 60, margin: '10px 0px 0px 0px' }}
+            />
+            <Typography style={{ padding: "20px" }}>JavaScript</Typography>
+          </Card>
+          <Card style={{ marginTop: "20px", display: "flex", justifyContent: "space-around", border: "1px solid black", minHeight: 71, borderRadius: 30 }}>
             <CardMedia
               component="img"
               alt="Not found"
@@ -84,19 +94,19 @@ export default function Home() {
             <Typography style={{ padding: "20px" }}>JavaScript</Typography>
           </Card>
         </Box>}
-        {user.type === "user" && user.session  &&<Box style={{border:"1px solid black",minWidth:344,minHeight:239, maxHeight:239, marginTop:50, marginRight:30, borderRadius:10, padding:"10px 10px 10px 10px",overflowY: "auto"}}>
-        <Card style={{marginTop:"20px", justifyContent:"space-around", border:"1px solid black", minHeight:104, borderRadius:10}}>
-           
-        <Typography style={{padding:"5px"}}>youtube.com</Typography>
-        <Typography style={{padding:"5px"}}>Como mejorar la concentracion y estudies mas</Typography>
-        <Link style={{fontSize:"12px"}}>https://www.youtube.com/watch?v=PldYiX6hOL0&pp=ygUXY29tbyBtZWpvcmFyIGxhIG1lbW9yaWE%3D</Link>
-            </Card>
-            <Card style={{marginTop:"20px", justifyContent:"space-around", border:"1px solid black", minHeight:104, borderRadius:10}}>
-            
-        <Typography style={{padding:"5px"}}>youtube.com</Typography>
-        <Typography style={{padding:"5px"}}>Como mejorar la concentracion y estudies mas</Typography>
-        <Link target="_blank" href="https://www.youtube.com/watch?v=PldYiX6hOL0&pp=ygUXY29tbyBtZWpvcmFyIGxhIG1lbW9yaWE%3D" style={{fontSize:"12px"}}>https://www.youtube.com/watch?v=PldYiX6hOL0&pp=ygUXY29tbyBtZWpvcmFyIGxhIG1lbW9yaWE%3D</Link>
-            </Card>
+        {user.type === "user" && user.session && <Box style={{ border: "1px solid black", minWidth: 344, minHeight: 239, maxHeight: 239, marginTop: 50, marginRight: 30, borderRadius: 10, padding: "10px 10px 10px 10px", overflowY: "auto" }}>
+          <Card style={{ marginTop: "20px", justifyContent: "space-around", border: "1px solid black", minHeight: 104, borderRadius: 10 }}>
+
+            <Typography style={{ padding: "5px" }}>youtube.com</Typography>
+            <Typography style={{ padding: "5px" }}>Como mejorar la concentracion y estudies mas</Typography>
+            <Link style={{ fontSize: "12px" }}>https://www.youtube.com/watch?v=PldYiX6hOL0&pp=ygUXY29tbyBtZWpvcmFyIGxhIG1lbW9yaWE%3D</Link>
+          </Card>
+          <Card style={{ marginTop: "20px", justifyContent: "space-around", border: "1px solid black", minHeight: 104, borderRadius: 10 }}>
+
+            <Typography style={{ padding: "5px" }}>youtube.com</Typography>
+            <Typography style={{ padding: "5px" }}>Como mejorar la concentracion y estudies mas</Typography>
+            <Link target="_blank" href="https://www.youtube.com/watch?v=PldYiX6hOL0&pp=ygUXY29tbyBtZWpvcmFyIGxhIG1lbW9yaWE%3D" style={{ fontSize: "12px" }}>https://www.youtube.com/watch?v=PldYiX6hOL0&pp=ygUXY29tbyBtZWpvcmFyIGxhIG1lbW9yaWE%3D</Link>
+          </Card>
         </Box>}
       </Box>
     </Box>
