@@ -56,43 +56,47 @@ export default function Home() {
         }
 
 
-      </Box>
-      <Box style={{ display: "flex", flexDirection: "column", width: "800" }}>
-        {user.type === "user" && user.session && <Typography style={{ fontSize: 20, margin: "40px 10px 10px 10px" }}>Cosas que te podrian interesar</Typography>}
-        {user.type === "user" && user.session && <Box style={{ border: "1px solid black", display: "flex", flexDirection: "column", justifyContent: "space-between", minWidth: 344, minHeight: 238, maxHeight: 239, marginTop: 10, marginRight: 30, borderRadius: 10, padding: "10px 10px 10px 10px", overflowY: "auto" }}>
-          <Card style={{ marginTop: "5px", display: "flex", justifyContent: "space-around", border: "1px solid black", minHeight: 71, borderRadius: 30 }}>
+        </Box>
+        <Box style={{display:"flex", flexDirection:"column",width:"800"}}>
+        {user.type === "user" && user.session  &&<Typography style={{fontSize:20, margin:"40px 10px 10px 10px"}}>Cosas que te podrian interesar</Typography>}
+        {user.type === "user" && user.session  &&<Box style={{border:"1px solid black",display:"flex", flexDirection:"column", justifyContent:"space-between", minWidth:344, minHeight:238, maxHeight:239, marginTop:10, marginRight:30, borderRadius:10, padding:"10px 10px 10px 10px",overflowY: "auto"}}>
+          <Link>
+            <Card style={{marginTop:"5px",display:"flex",justifyContent:"space-around", border:"1px solid black", minHeight:71, borderRadius:30}}>
             <CardMedia
-              component="img"
-              alt="Not found"
-              height="140"
-              title="Image Title"
-              image="https://i.ibb.co/6Z9K5dJ/Logo-color-removebg-preview.png"
-              style={{ borderRadius: '50%', maxHeight: 60, maxWidth: 60, margin: '10px 0px 0px 0px' }}
-            />
-            <Typography style={{ padding: "20px" }}>JavaScript</Typography>
-          </Card>
-          <Card style={{ marginTop: "20px", display: "flex", justifyContent: "space-around", border: "1px solid black", minHeight: 71, borderRadius: 30 }}>
+          component="img"
+          alt="Not found"
+          height="140"
+          title="Image Title"
+          // https://www.youtube.com/watch?v=s5ABwHaN7as&pp=ygUhYW5hbGlzaXMgeSBkZXNhcnJvbGxvIGRlIHNvZnR3YXJl
+          image="https://i.ibb.co/6Z9K5dJ/Logo-color-removebg-preview.png"
+          style={{ borderRadius: '50%', maxHeight:60, maxWidth:60, margin: '10px 0px 0px 0px'}}
+        />
+        <Typography style={{padding:"20px"}}>Patrones de diseño</Typography>
+            </Card>
+            </Link>
+            <Link target="_blank" href="https://www.netacad.com/courses/programming/pcap-programming-essentials-python" />
+            <Card style={{marginTop:"5px",display:"flex",justifyContent:"space-around", border:"1px solid black", minHeight:71, borderRadius:30}}>
             <CardMedia
-              component="img"
-              alt="Not found"
-              height="140"
-              title="Image Title"
-              image="https://i.ibb.co/6Z9K5dJ/Logo-color-removebg-preview.png"
-              style={{ borderRadius: '50%', maxHeight: 60, maxWidth: 60, margin: '10px 0px 0px 0px' }}
-            />
-            <Typography style={{ padding: "20px" }}>JavaScript</Typography>
-          </Card>
-          <Card style={{ display: "flex", marginTop: "20px", justifyContent: "space-around", border: "1px solid black", minHeight: 71, borderRadius: 30 }}>
+          component="img"
+          alt="Not found"
+          height="140"
+          title="Image Title"
+          image="https://i.ibb.co/6Z9K5dJ/Logo-color-removebg-preview.png"
+          style={{ borderRadius: '50%', maxHeight:60, maxWidth:60, margin: '10px 0px 0px 0px'}}
+        />
+        <Typography style={{padding:"20px"}}>JavaScript</Typography>
+            </Card>
+            <Card style={{marginTop:"20px",display:"flex",justifyContent:"space-around", border:"1px solid black", minHeight:71, borderRadius:30}}>
             <CardMedia
-              component="img"
-              alt="Not found"
-              height="140"
-              title="Image Title"
-              image="https://i.ibb.co/6Z9K5dJ/Logo-color-removebg-preview.png"
-              style={{ borderRadius: '50%', maxHeight: 60, maxWidth: 60, margin: '10px 0px 0px 0px' }}
-            />
-            <Typography style={{ padding: "20px" }}>JavaScript</Typography>
-          </Card>
+          component="img"
+          alt="Not found"
+          height="140"
+          title="Image Title"
+          image="https://i.ibb.co/6Z9K5dJ/Logo-color-removebg-preview.png"
+          style={{ borderRadius: '50%', maxHeight:60, maxWidth:60, margin: '10px 0px 0px 0px'}}
+        />
+        <Typography style={{padding:"20px"}}>JavaScript</Typography>
+            </Card>
         </Box>}
         {user.type === "user" && user.session && <Box style={{ border: "1px solid black", minWidth: 344, minHeight: 239, maxHeight: 239, marginTop: 50, marginRight: 30, borderRadius: 10, padding: "10px 10px 10px 10px", overflowY: "auto" }}>
           <Card style={{ marginTop: "20px", justifyContent: "space-around", border: "1px solid black", minHeight: 104, borderRadius: 10 }}>

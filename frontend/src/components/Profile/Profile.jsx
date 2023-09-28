@@ -1,7 +1,30 @@
 import React from "react";
 import { Box, TextField, Typography, Card, Button } from "@mui/material";
+import Swal from 'sweetalert2';
 
 export default function Profile(){
+
+    const handleClick = () =>{
+        Swal.fire({
+            title: '¿Quieres actualizar tu perfil?',
+            text: "El perfil se actualizara",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText:"Cancelar",
+            confirmButtonText: 'Si'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire(
+                'Perfil actualizado!',
+                'Muy bien',
+                'success'
+              )
+            }
+          })
+        }
+
     return(
         <Box style={{display:"flex", justifyContent:"center"}}>
             <Card style={{maxHeight:600, maxWidth:600, marginTop:"50px"}}>
@@ -37,7 +60,7 @@ export default function Profile(){
       </Box>
       </Box>
       <Box style={{display:"flex", justifyContent:"space-around", marginTop:"30px", marginBottom:"10px"}}>
-      <Button variant="contained">Actualizar</Button>
+      <Button onClick={handleClick} variant="contained">Actualizar</Button>
       </Box>
       </Card>
       </Box>
