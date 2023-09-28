@@ -13,7 +13,7 @@ export default function Profile(){
       </Box>
       <Box style={{display:"flex", flexDirection:"column", marginLeft:"50px"}}>
       <Typography style={{ fontSize:"16px"}}>Apellidos</Typography>
-      <TextField id="outlined-basic" maxRow={5} label="Digite los aplllidos" />
+      <TextField id="outlined-basic" maxRow={5} value="Paez Valencia" />
       </Box>
       </Box>
       <Box style={{display:"flex", justifyContent:"space-around", marginTop:"30px"}}>
