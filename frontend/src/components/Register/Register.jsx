@@ -184,7 +184,7 @@ export default function Login() {
             </Box>
           </Box>
 
-          <Button style={{ background: "#153794", marginLeft: "250px", fontSize: 20, textTransform: "none", color: "white" }} type="submit">Ingresar</Button>
+          <Button style={{ background: "#153794", marginLeft: "250px", fontSize: 20, textTransform: "none", color: "white" }} type="submit">Enviar</Button>
         </form>
         <Box>
           <Link href="/login" style={{ marginLeft: "180px", color: "#9B9B9B", fontSize: "18px" }}>¿Ya tienes una cuenta? Inicia sesion!</Link>

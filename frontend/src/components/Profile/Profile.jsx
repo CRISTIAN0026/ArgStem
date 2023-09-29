@@ -52,11 +52,7 @@ export default function Profile(){
       <Box style={{display:"flex", justifyContent:"space-around", marginTop:"30px"}}>
             <Box style={{display:"flex", flexDirection:"column"}}>
         <Typography style={{fontSize:"16px"}}>Contraseña</Typography>
-      <TextField id="outlined-basic" maxRow={5} label="Digite la contraseña"  />
-      </Box>
-      <Box style={{display:"flex", flexDirection:"column", marginLeft:"50px"}}>
-      <Typography style={{ fontSize:"16px"}}>Confirmar contraseña</Typography>
-      <TextField id="outlined-basic" maxRow={5} label="Confirme su contraseña" />
+      <TextField id="outlined-basic" maxRow={5} type="password" label="Digite la contraseña"  />
       </Box>
       </Box>
       <Box style={{display:"flex", justifyContent:"space-around", marginTop:"30px", marginBottom:"10px"}}>

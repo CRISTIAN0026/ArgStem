@@ -7,17 +7,38 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import "./Navigation.css"
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-
-
-const user = {
-    session: false,
-    password: "<PASSWORD>",
-    type:"invite"
-}
 
 
 export default function Navigation(){
+  const token = localStorage.getItem('token');
+    const id = localStorage.getItem('id');
+  
+    const [dataUser, setDataUser] = useState({});
+  
+    const typeRol = {
+      1: "admin",
+      2: "user"
+    }
+  
+    useEffect(() => {
+      const getKeys = async () => {
+        try {
+          const { data } = await axios(`http://localhost:4000/api/profiles/${token}/${id}`);
+          console.log(data);
+          const user = {
+            session: true,
+            type: `${typeRol[data.idRols]}`,
+          }
+          setDataUser(user);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      getKeys();
+    }, [])
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -27,9 +48,9 @@ export default function Navigation(){
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-
-    return(
+  
+  
+  return(
         <Grid container 
         className="content"
         >
@@ -39,7 +60,7 @@ export default function Navigation(){
                 <Typography style={{color:"#FFFFFF", fontFamily:"Roboto", fontSize:"20px"}}>ARG STEM</Typography>
             </Box>
             </Link>
-            { user.session && user.type === "user" && <Box sx={{ display:"flex", minWidth:300,  justifyContent:"flex-end", padding:"25px"}} >
+            { dataUser.session && dataUser.type === "user" && <Box sx={{ display:"flex", minWidth:300,  justifyContent:"flex-end", padding:"25px"}} >
       <FormControl style={{minWidth:250, minHeight:5}} >
         <InputLabel id="demo-simple-select-label" style={{fontFamily:"Roboto"}}>Selecione tema a buscar</InputLabel>
         <Select
@@ -55,14 +76,14 @@ export default function Navigation(){
         </Select>
       </FormControl>
     </Box>}
-            { user.session && user.type === "admin" &&<Box style={{display:"flex"}}>
+            { dataUser.session && dataUser.type === "admin" &&<Box style={{display:"flex"}}>
         <Button href="/" style={{color:"white", fontSize:18}}>Inicio</Button>
         <Button style={{color:"white", fontSize:18}}>Solicitudes</Button>
-        <Button href="/upload" style={{color:"white", fontSize:18}}>Bublicar</Button>
+        <Button href="/upload" style={{color:"white", fontSize:18}}>Publicar</Button>
         <Button href="/users" style={{color:"white", fontSize:18}}>Usuarios</Button>
     </Box>}
             <Grid item style={{display:"flex", minHeight:"100px"}}>
-            { !user.session && user.type === "invite" && <Box sx={{ display:"flex", minWidth:300,  justifyContent:"flex-end", padding:"25px 0px "}} >
+            { !dataUser.session && dataUser.type === "invite" && <Box sx={{ display:"flex", minWidth:300,  justifyContent:"flex-end", padding:"25px 0px "}} >
       <FormControl style={{minWidth:250, minHeight:5}} >
         <InputLabel id="demo-simple-select-label" style={{fontFamily:"Roboto"}}>Selecione tema a buscar</InputLabel>
         <Select
@@ -78,7 +99,7 @@ export default function Navigation(){
       </FormControl>
     </Box>}
     
-{ !user.session && user.type === "invite" && <Grid item style={{
+{ !dataUser.session && dataUser.type === "invite" && <Grid item style={{
     display:"flex",
             justifyContent: "flex-end",
             minWidth:"300px",
@@ -89,7 +110,7 @@ export default function Navigation(){
             <span style={{ color: "#FFFFFF", cursor: "pointer" }}>Registrarse</span></Link>
             </Grid>}
              {
-                user.type === "user" && user.session &&
+                dataUser.type === "user" && dataUser.session &&
                 <Box style={{ padding:"20px 30px 0px 10px" }}>
                   <Box>
                 <AccountCircleOutlinedIcon style={{ fontSize: 48, color:"white", padding:"0px 0px 0px 20px"}}/>
@@ -106,7 +127,7 @@ export default function Navigation(){
                 </Box>
             }
             {
-                user.type === "admin" && user.session &&
+                dataUser.type === "admin" && dataUser.session &&
                 <Box style={{ padding:"20px 30px 0px 10px" }}>
                   <Box>
                 <AccountCircleOutlinedIcon style={{ fontSize: 48, color:"white", padding:"0px 0px 0px 20px"}}/>
@@ -133,7 +154,7 @@ export default function Navigation(){
       >
         <Box  style={{display:"flex", flexDirection:"column"}}>
         <Link style={{textTransform:"none", color:"black", fontWeight:700}} href="/profile">Perfil</Link>
-        {user.type === "user" &&<Link style={{textTransform:"none", color:"black", fontWeight:700}} href="/document">Mis documentos</Link>}
+        {dataUser.type === "user" &&<Link style={{textTransform:"none", color:"black", fontWeight:700}} href="/document">Mis documentos</Link>}
         <Link style={{textTransform:"none", color:"black", fontWeight:700}}>Cerrar sesion</Link>
         </Box>
       </Menu>
