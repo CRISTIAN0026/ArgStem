@@ -7,12 +7,19 @@ import Swal from "sweetalert2";
 export default function Login() {
   const [name, setName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [idRols, setIdRols] = useState(2);
+  const [idRols] = useState(2);
   const [dni, setDni] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+
+  const token = localStorage.getItem('token');
+
+  if (token) {
+    window.location.href = `http://localhost:3000`;
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 

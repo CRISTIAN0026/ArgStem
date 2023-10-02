@@ -9,6 +9,12 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const token = localStorage.getItem('token');
+
+  if (token) {
+    window.location.href = `http://localhost:3000`;
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email.includes('@') || !email.includes('.com')) {
